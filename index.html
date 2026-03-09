@@ -1,482 +1,577 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arjun | Portfolio</title>
+    <title>Arjun B | Premium Portfolio</title>
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700;900&family=Space+Grotesk:wght@300;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap"
         rel="stylesheet">
+    <!-- Phosphor Icons for modern slick icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header id="header1">
-        <div class="container1">
-            <h3>ARJUN B</h3>
-            <nav id="navigation_bar">
-                <a href="#about" data-text="About">About me</a>
-                <a href="#projects" data-text="Project">Project</a>
-                <a href="#skills" data-text="Skills">Skils</a>
-                <a href="#contact" data-text="Contact">Contact</a>
-            </nav>
-        </div>
-    </header>
-    <section class="section2">
-        <div class="container2">
-            <h2>Hi, I'm <span>ARJUN</span></h2>
-            <h4>Web Developer | Python Full-Stack | Learner</h4>
-            <div class="btn-wrapper">
-                <button><a href="./" download>Download Resume</a></button>
-            </div>
-        </div>
-
-        <div class="social_meadia_container">
-            <a
-                href="https://www.linkedin.com/in/arjun-b-655249293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img
-                    src="./img/linkedin.png" alt=""></a>
-            <a href=""><img src="./img/github (1).png" alt=""></a>
-            <a href="https://www.instagram.com/_arjun_ajuzz__?igsh=MWtrM3p5bHU3MnEyMQ=="><img src="./img/instagram.png"
-                    alt=""></a>
-            <a href="mailto:arjunb7025@gmail.com"><img src="./img/gmail.png" alt=""></a>
-            <a href="tel:+917025376294"><img src="./img/telephone-call.png" alt=""></a>
-            <a href="https://wa.me/917025376294"><img src="./img/whatsapp (1).png" alt=""></a>
-        </div>
-    </section>
-<section class="about_section" id="about">
-    <div class="section_header reveal">
-        <h2 class="section_title">About Me</h2>
-        <div class="title_line"></div>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress-container">
+        <div class="reading-progress-bar" id="readingProgress"></div>
     </div>
 
-    <div class="about_container">
-        <div class="profile_side reveal">
-            <div class="img_container">
-                <img src="./img/arjun.main image.jpeg" alt="Arjun B" class="profile_img">
-            </div>
-            
-            <div class="edu_card">
-                <h4 class="label">Academic Background</h4>
-                <div class="edu_item">
-                    <p class="degree">BCA • Computer Applications</p>
-                    <p class="inst">Bharathiar University | 2022 — 2025</p>
-                    <p class="grade">CGPA: 7.6</p>
-                </div>
-            </div>
-        </div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" data-cursor></div>
+    <div class="cursor-outline" data-cursor></div>
 
-        <div class="details_side">
-            <div class="bio_content reveal">
-                <h3 class="role_title">
-                    I am a <span id="typewriter"></span><span class="cursor">|</span>
-                </h3>
-                <p class="paragraph">
-                    I am <span class="highlight">Arjun B</span>, an IT graduate with a deep-seated passion for architecting scalable, efficient, and user-centric digital solutions. My journey in software engineering is driven by a commitment to solving real-world challenges through clean code and innovative backend design. 
+    <!-- Background Elements -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-text">ARJUN</span><span class="logo-dot">.</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#welcome" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Work</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Welcome Hero Section -->
+        <section id="welcome" class="hero-section section-padding">
+            <div class="hero-content">
+                <div class="hero-badge reveal-up">
+                    <span class="pulse-dot"></span>
+                    Available for new opportunities
+                </div>
+
+                <h1 class="hero-title reveal-up" style="--delay: 0.1s">
+                    Hi, I'm <span class="gradient-text">Arjun B</span>
+                </h1>
+
+                <h2 class="hero-subtitle reveal-up" style="--delay: 0.2s">
+                    I build <span id="dynamic-text" class="dynamic-text"></span><span class="cursor">|</span>
+                </h2>
+
+                <p class="hero-desc reveal-up" style="--delay: 0.3s">
+                    A passionate IT graduate, Python Full-Stack Developer, and UI/UX enthusiast crafting exceptional
+                    digital experiences with modern web technologies.
                 </p>
 
-                <p class="paragraph">
-                    With expertise in <strong>Python, Django, and React.js</strong>, I specialize in building the bridge between complex data structures and seamless user experiences. I don't just write code; I design systems that are maintainable, secure, and built for performance. My experience spans from designing robust <strong>RESTful APIs</strong> to managing complex <strong>SQL databases</strong> and deployment workflows.
-                </p>
+                <div class="hero-actions reveal-up" style="--delay: 0.4s">
+                    <a href="#projects" class="btn btn-primary">
+                        View My Work
+                        <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <a href="./" download class="btn btn-secondary">
+                        <i class="ph ph-download-simple"></i>
+                        Resume
+                    </a>
+                </div>
 
-                <p class="paragraph">
-                    A defining highlight of my career was developing a <strong>Machine Learning-based Phishing Detection System</strong>, which achieved a 92% prediction accuracy. This project reflects my approach to development: combining analytical thinking with modern technology to create tools that make a tangible impact on digital security and efficiency.
-                </p>
+                <div class="social-links reveal-up" style="--delay: 0.5s">
+                    <a href="https://www.linkedin.com/in/arjun-b-655249293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        target="_blank" class="social-icon" aria-label="LinkedIn">
+                        <i class="ph-fill ph-linkedin-logo"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="social-icon" aria-label="GitHub">
+                        <i class="ph-fill ph-github-logo"></i>
+                    </a>
+                    <a href="https://www.instagram.com/_arjun_ajuzz__?igsh=MWtrM3p5bHU3MnEyMQ==" target="_blank"
+                        class="social-icon" aria-label="Instagram">
+                        <i class="ph-fill ph-instagram-logo"></i>
+                    </a>
+                </div>
             </div>
 
-            <div class="tech_grid reveal">
-                <div class="tech_item">
-                    <span class="tech_category">Backend</span>
-                    <p>Python, Django, REST API</p>
+            <div class="hero-visual reveal-scale" style="--delay: 0.2s">
+                <div class="image-wrapper tilt-container">
+                    <img src="./img/arjun.main image.jpeg" alt="Arjun B" class="hero-img tilt-element"
+                        onerror="this.src='https://via.placeholder.com/400x400/18181b/ffffff?text=Arjun+B'">
+
+                    <!-- Floating Tech Badges -->
+                    <div class="floating-badge badge-1">
+                        <i class="ph-fill ph-file-code"></i> Python
+                    </div>
+                    <div class="floating-badge badge-2">
+                        <i class="ph-fill ph-atom"></i> React
+                    </div>
                 </div>
-                <div class="tech_item">
-                    <span class="tech_category">Frontend</span>
-                    <p>React.js, Modern CSS, JS</p>
+            </div>
+
+            <a href="#about" class="scroll-indicator bounce">
+                <p>Scroll Down</p>
+                <i class="ph ph-caret-down"></i>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section section-padding">
+            <div class="section-header reveal-up">
+                <span class="section-subtitle">01. About Me</span>
+                <h2 class="section-title">Who I <span class="gradient-text">Am</span></h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-text reveal-up" style="--delay: 0.1s">
+                    <p class="lead-text">
+                        I am an IT graduate with a deep-seated passion for architecting scalable, efficient, and
+                        user-centric digital solutions.
+                    </p>
+                    <p>
+                        My journey in software engineering is driven by a commitment to solving real-world challenges
+                        through clean code and innovative backend design. With expertise in <strong>Python, Django, and
+                            React.js</strong>, I specialize in building the bridge between complex data structures and
+                        seamless user experiences.
+                    </p>
+                    <p>
+                        A defining highlight of my career was developing a <strong>Machine Learning-based Phishing
+                            Detection System</strong>, which achieved a 92% prediction accuracy. This project reflects
+                        my approach to development: combining analytical thinking with modern technology.
+                    </p>
+
+                    <div class="stats-grid mt-4">
+                        <div class="stat-box slide-up" style="--delay: 0.2s">
+                            <h3 class="stat-number">10+</h3>
+                            <p class="stat-label">Projects Completed</p>
+                        </div>
+                        <div class="stat-box slide-up" style="--delay: 0.3s">
+                            <h3 class="stat-number">3</h3>
+                            <p class="stat-label">Years of Coding Experience</p>
+                        </div>
+                        <div class="stat-box slide-up" style="--delay: 0.4s">
+                            <h3 class="stat-number">7.6</h3>
+                            <p class="stat-label">CGPA (BCA)</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="tech_item">
-                    <span class="tech_category">Data</span>
-                    <p>SQL, Database Design</p>
+
+                <div class="about-visual reveal-scale" style="--delay: 0.2s">
+                    <div class="glass-card education-card tilt-container">
+                        <div class="card-icon">
+                            <i class="ph-fill ph-graduation-cap"></i>
+                        </div>
+                        <h3>Academic Background</h3>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h4>BCA • Computer Applications</h4>
+                            <p class="timeline-org">Bharathiar University</p>
+                            <span class="timeline-date">2022 — 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience/Path Section -->
+        <section id="experience" class="experience-section section-padding">
+            <div class="section-header reveal-up">
+                <span class="section-subtitle">02. My Journey</span>
+                <h2 class="section-title">Career <span class="gradient-text">Path</span></h2>
+            </div>
+
+            <div class="timeline-container reveal-up" style="--delay: 0.2s">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-node left reveal-slide-right">
+                    <div class="node-content glass-card hover-glow">
+                        <span class="node-date">2024 - Present</span>
+                        <h3 class="node-title">Freelance Full-Stack Developer</h3>
+                        <h4 class="node-company">Self-Employed</h4>
+                        <p class="node-desc">Developing modern, responsive websites and full-stack applications for
+                            clients, focusing on React frontends and Python/Django backends.</p>
+                        <ul class="node-tags">
+                            <li>React</li>
+                            <li>Django</li>
+                            <li>Tailwind</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-node right reveal-slide-left">
+                    <div class="node-content glass-card hover-glow">
+                        <span class="node-date">2023 - 2024</span>
+                        <h3 class="node-title">Machine Learning Researcher (Academic)</h3>
+                        <h4 class="node-company">Bharathiar University</h4>
+                        <p class="node-desc">Led the development of a Phishing Detection System using ML algorithms,
+                            achieving 92% accuracy in identifying malicious URLs.</p>
+                        <ul class="node-tags">
+                            <li>Python</li>
+                            <li>Scikit-Learn</li>
+                            <li>Data Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-node left reveal-slide-right">
+                    <div class="node-content glass-card hover-glow">
+                        <span class="node-date">2022</span>
+                        <h3 class="node-title">Frontend Engineering Intern</h3>
+                        <h4 class="node-company">Tech Startup</h4>
+                        <p class="node-desc">Collaborated with design teams to build pixel-perfect UI clones and dynamic
+                            interactive components using vanilla HTML/CSS/JS.</p>
+                        <ul class="node-tags">
+                            <li>HTML5/CSS3</li>
+                            <li>JavaScript</li>
+                            <li>UI/UX</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section section-padding">
+            <div class="section-header text-center reveal-up">
+                <span class="section-subtitle">03. Expertise</span>
+                <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+            </div>
+
+            <div class="skills-grid mt-4">
+                <!-- Skill 1 -->
+                <div class="skill-card glass-card hover-glow reveal-up" style="--delay: 0.1s">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="ph-fill ph-file-py"></i></div>
+                        <h3 class="skill-name">Python</h3>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="80%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="skill-card glass-card hover-glow reveal-up" style="--delay: 0.2s">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="ph-fill ph-cube"></i></div>
+                        <h3 class="skill-name">Django</h3>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="85%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-card glass-card hover-glow reveal-up" style="--delay: 0.3s">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="ph-fill ph-file-html"></i></div>
+                        <h3 class="skill-name">HTML5 / CSS3</h3>
+                        <span class="skill-percent">95%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="95%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-card glass-card hover-glow reveal-up" style="--delay: 0.4s">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="ph-fill ph-file-js"></i></div>
+                        <h3 class="skill-name">JavaScript</h3>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="85%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="skill-card glass-card hover-glow reveal-up" style="--delay: 0.5s">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="ph-fill ph-database"></i></div>
+                        <h3 class="skill-name">SQL & Databases</h3>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="80%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="skill-card glass-card hover-glow reveal-up" style="--delay: 0.6s">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="ph-fill ph-pen-nib"></i></div>
+                        <h3 class="skill-name">UI / UX Design</h3>
+                        <span class="skill-percent">88%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="88%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section section-padding">
+            <div class="section-header text-center reveal-up">
+                <span class="section-subtitle">04. Portfolio</span>
+                <h2 class="section-title">Featured <span class="gradient-text">Work</span></h2>
+            </div>
+
+            <div class="filter-container reveal-up" style="--delay: 0.2s">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="clone">UI Clones</button>
+                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                <button class="filter-btn" data-filter="dynamic">Dynamic Apps</button>
+            </div>
+
+            <div class="projects-masonry mt-4" id="projects-grid">
+
+                <!-- Project 1 -->
+                <article class="project-card glass-card filter-item clone reveal-up" style="--delay: 0.1s"
+                    onclick="openProjectModal('Netflix UI Clone', 'A responsive UI clone inspired by Netflix’s production interface, developed using structured HTML and advanced CSS techniques.', './img/BrandAssets_Logos_01-Wordmark.jpg', 'HTML5, CSS3, Flexbox', 'Clone')">
+                    <div class="card-img-wrapper">
+                        <img src="./img/BrandAssets_Logos_01-Wordmark.jpg" alt="Netflix Clone" class="card-img"
+                            onerror="this.src='https://via.placeholder.com/600x400/18181b/ffffff?text=Netflix+Clone'">
+                        <div class="card-overlay">
+                            <i class="ph ph-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <span class="badge badge-clone">Clone</span>
+                        <h3 class="card-title">Netflix UI Clone</h3>
+                        <p class="card-tech">HTML5 & CSS3</p>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card glass-card filter-item dynamic reveal-up" style="--delay: 0.2s"
+                    onclick="openProjectModal('Dynamic Calculator', 'A dynamic calculator application built featuring real-time input handling and interactive UI feedback. Strong DOM manipulation.', './img/calculator.png', 'HTML5, CSS3, Vanilla JS', 'Dynamic', './dynamic web pages/calculator/index.html')">
+                    <div class="card-img-wrapper">
+                        <img src="./img/calculator.png" alt="Dynamic Calculator" class="card-img"
+                            onerror="this.src='https://via.placeholder.com/600x400/18181b/ffffff?text=Calculator'">
+                        <div class="card-overlay">
+                            <i class="ph ph-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <span class="badge badge-dynamic">Dynamic</span>
+                        <h3 class="card-title">Responsive Calculator</h3>
+                        <p class="card-tech">JS DOM Logic</p>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card glass-card filter-item clone reveal-up" style="--delay: 0.3s"
+                    onclick="openProjectModal('Prime Movies', 'A production-inspired Prime Movies UI clone built with a structured HTML framework and modular CSS styling.', './img/prime-video-logo-on-a-blue-background-with-a-curved-film-strip-wrapping-around-it-1.avif', 'HTML5, CSS3 Grid', 'Clone')">
+                    <div class="card-img-wrapper">
+                        <img src="./img/prime-video-logo-on-a-blue-background-with-a-curved-film-strip-wrapping-around-it-1.avif"
+                            alt="Prime Video" class="card-img"
+                            onerror="this.src='https://via.placeholder.com/600x400/18181b/ffffff?text=Prime+Video'">
+                        <div class="card-overlay">
+                            <i class="ph ph-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <span class="badge badge-clone">Clone</span>
+                        <h3 class="card-title">Prime Video UI</h3>
+                        <p class="card-tech">Responsive Grid</p>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-card glass-card filter-item dynamic reveal-up" style="--delay: 0.4s"
+                    onclick="openProjectModal('Rock-Paper-Scissors', 'Built with HTML, CSS, and JS, featuring a clean responsive UI and smooth interactive gameplay with score tracking.', './img/rock papper scissors (1).png', 'Vanilla JS, CSS Animations', 'Dynamic', './dynamic web pages/GAME/index.html')">
+                    <div class="card-img-wrapper">
+                        <img src="./img/rock papper scissors (1).png" alt="RPS Game" class="card-img"
+                            onerror="this.src='https://via.placeholder.com/600x400/18181b/ffffff?text=RPS+Game'">
+                        <div class="card-overlay">
+                            <i class="ph ph-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <span class="badge badge-dynamic">Dynamic</span>
+                        <h3 class="card-title">R-P-S Game Engine</h3>
+                        <p class="card-tech">Game Logic API</p>
+                    </div>
+                </article>
+
+                <!-- Project 5 -->
+                <article class="project-card glass-card filter-item clone reveal-up" style="--delay: 0.5s"
+                    onclick="openProjectModal('Shaadi.com Clone', 'A clean, responsive static website focused on layout precision and consistent UI styling.', './img/shandi (1).png', 'HTML5, Modern CSS3', 'Clone')">
+                    <div class="card-img-wrapper">
+                        <img src="./img/shandi (1).png" alt="Shaadi Clone" class="card-img"
+                            onerror="this.src='https://via.placeholder.com/600x400/18181b/ffffff?text=Matchmaking+UI'">
+                        <div class="card-overlay">
+                            <i class="ph ph-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <span class="badge badge-clone">Clone</span>
+                        <h3 class="card-title">Matchmaking Brand UI</h3>
+                        <p class="card-tech">Layout Architecture</p>
+                    </div>
+                </article>
+
+                <!-- Project 6 -->
+                <article class="project-card glass-card filter-item dynamic reveal-up" style="--delay: 0.6s"
+                    onclick="openProjectModal('Facebook Validation', 'Login interface featuring real-time form validation and user-friendly robust error handling.', './img/facebook Validation (1).png', 'RegEx, Forms, JS', 'Dynamic')">
+                    <div class="card-img-wrapper">
+                        <img src="./img/facebook Validation (1).png" alt="FB Validation" class="card-img"
+                            onerror="this.src='https://via.placeholder.com/600x400/18181b/ffffff?text=Form+Validation'">
+                        <div class="card-overlay">
+                            <i class="ph ph-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <span class="badge badge-dynamic">Dynamic</span>
+                        <h3 class="card-title">Auth Form Validation</h3>
+                        <p class="card-tech">RegEx Security</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CTA / Pre-contact -->
+        <section class="cta-section section-padding">
+            <div class="cta-box glass-card hover-glow reveal-scale" style="--delay: 0.1s">
+                <h2>I'm Not Just Looking For A Job</h2>
+                <p>I am looking for responsibility, complex challenges, and opportunities to build production-level
+                    architectures. Let's create impactful digital solutions together.</p>
+                <div class="cta-features">
+                    <span><i class="ph-fill ph-check-circle"></i> Fast Learner</span>
+                    <span><i class="ph-fill ph-check-circle"></i> Clean Code</span>
+                    <span><i class="ph-fill ph-check-circle"></i> Performance Focused</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section section-padding">
+            <div class="section-header reveal-up">
+                <span class="section-subtitle">05. What's Next?</span>
+                <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+            </div>
+
+            <div class="contact-layout mt-4">
+                <div class="contact-info reveal-slide-right" style="--delay: 0.2s">
+                    <p class="contact-desc">
+                        I’m currently open to internships, freelance projects, and full-time opportunities.
+                        Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+                    </p>
+
+                    <ul class="contact-list">
+                        <li>
+                            <div class="icon-box"><i class="ph ph-envelope-simple"></i></div>
+                            <div class="contact-text">
+                                <span class="label">Email</span>
+                                <a href="mailto:arjunb7025@gmail.com">arjunb7025@gmail.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-box"><i class="ph ph-phone"></i></div>
+                            <div class="contact-text">
+                                <span class="label">Phone / WhatsApp</span>
+                                <a href="tel:+917025376294">+91 7025376294</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-box"><i class="ph ph-map-pin"></i></div>
+                            <div class="contact-text">
+                                <span class="label">Location</span>
+                                <span>Kerala, India</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contact-form-container glass-card reveal-slide-left" style="--delay: 0.3s">
+                    <form id="contactForm" class="contact-form" autocomplete="off">
+                        <div class="form-group floating-label-group">
+                            <input type="text" id="name" name="name" class="floating-input" placeholder=" " required>
+                            <label for="name" class="floating-label">Name</label>
+                            <div class="error-text"></div>
+                        </div>
+                        <div class="form-group floating-label-group">
+                            <input type="email" id="email" name="email" class="floating-input" placeholder=" " required>
+                            <label for="email" class="floating-label">Email</label>
+                            <div class="error-text"></div>
+                        </div>
+                        <div class="form-group floating-label-group">
+                            <input type="text" id="subject" name="subject" class="floating-input" placeholder=" "
+                                required>
+                            <label for="subject" class="floating-label">Subject</label>
+                            <div class="error-text"></div>
+                        </div>
+                        <div class="form-group floating-label-group">
+                            <textarea id="message" name="message" class="floating-input" rows="4" placeholder=" "
+                                required></textarea>
+                            <label for="message" class="floating-label">Message</label>
+                            <div class="error-text"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <i class="ph ph-paper-plane-right"></i>
+                            <div class="spinner"></div>
+                        </button>
+                        <p id="formNote" class="form-note"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Arjun B. Designed & Built with passion.</p>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/arjun-b-655249293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+                <a href="https://github.com" aria-label="GitHub"><i class="ph-fill ph-github-logo"></i></a>
+            </div>
+
+            <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+                <i class="ph ph-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Project Modal Dialog -->
+    <div class="modal" id="projectModal">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="modalClose"><i class="ph ph-x"></i></button>
+            <div class="modal-body">
+                <img id="modalImg" src="" alt="Project Image" class="modal-image">
+                <div class="modal-info">
+                    <span id="modalBadge" class="badge"></span>
+                    <h3 id="modalTitle" class="modal-title"></h3>
+                    <p id="modalTech" class="modal-tech"></p>
+                    <div class="divider"></div>
+                    <p id="modalDesc" class="modal-desc"></p>
+
+                    <div id="modalAction" class="modal-action mt-4" style="display: none;">
+                        <a id="modalLink" href="#" target="_blank" class="btn btn-primary btn-sm">
+                            View Live <i class="ph ph-arrow-square-out"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<section class="skills_section" id="skills">
 
-  <div class="skills_header">
-    <h2>Technical Skills</h2>
-    <p>Focused on building scalable, responsive, and production-level web applications.</p>
-  </div>
-
-  <div class="skills_container">
-
-    <!-- Skill Card -->
-    <div class="skill_card reveal_skill">
-      <div class="skill_title">
-        <h3>Python</h3>
-        <span class="skill_percent" data-count="80">0%</span>
-      </div>
-      <div class="skill_bar">
-        <div class="skill_progress" data-progress="80"></div>
-      </div>
-    </div>
-     <div class="skill_card reveal_skill">
-      <div class="skill_title">
-        <h3>Django</h3>
-        <span class="skill_percent" data-count="85">0%</span>
-      </div>
-      <div class="skill_bar">
-        <div class="skill_progress" data-progress="85"></div>
-      </div>
-    </div>
-    <div class="skill_card reveal_skill">
-      <div class="skill_title">
-        <h3>HTML5</h3>
-        <span class="skill_percent" data-count="95">0%</span>
-      </div>
-      <div class="skill_bar">
-        <div class="skill_progress" data-progress="95"></div>
-      </div>
-    </div>
-    
-    <div class="skill_card reveal_skill">
-      <div class="skill_title">
-        <h3>CSS3 / Responsive Design</h3>
-        <span class="skill_percent" data-count="90">0%</span>
-      </div>
-      <div class="skill_bar">
-        <div class="skill_progress" data-progress="90"></div>
-      </div>
-    </div>
-
-    <div class="skill_card reveal_skill">
-      <div class="skill_title">
-        <h3>JavaScript</h3>
-        <span class="skill_percent" data-count="85">0%</span>
-      </div>
-      <div class="skill_bar">
-        <div class="skill_progress" data-progress="85"></div>
-      </div>
-    </div>
-
-    <div class="skill_card reveal_skill">
-      <div class="skill_title">
-        <h3>UI / UX Design Sense</h3>
-        <span class="skill_percent" data-count="88">0%</span>
-      </div>
-      <div class="skill_bar">
-        <div class="skill_progress" data-progress="88"></div>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-<section class="projects_section" id="projects">
-
-  <div class="projects_header reveal">
-    <h2>My Projects</h2>
-    <div class="divider"></div>
-
-    <div class="filter_buttons">
-      <button class="filter_btn active" data-filter="all">All</button>
-      <button class="filter_btn" data-filter="clone">Clones</button>
-      <button class="filter_btn" data-filter="ecommerce">E-Commerce</button>
-      <button class="filter_btn" data-filter="dynamic">Dynamic Apps</button>
-    </div>
-  </div>
-
-  <div class="projects_grid">
-
-    <!-- ================= CLONE ================= -->
-
-    <article class="project_card reveal"
-      data-category="clone"
-      data-title="Netflix UI Clone"
-      data-description="A responsive UI clone inspired by Netflix’s production interface, developed using structured HTML and advanced CSS techniques including flexbox, grid, and layered positioning. The objective was to replicate real-world streaming platform design systems while maintaining clean code architecture and scalable styling practices."
-      data-images="./img/netflix website (1).png,./img/netflix website (2).png">
-
-      <div class="card_image">
-        <img src="./img/BrandAssets_Logos_01-Wordmark.jpg" alt="">
-      </div>
-
-      <div class="card_body">
-        <span class="badge clone">Clone</span>
-        <h3>Netflix UI Clone</h3>
-        <p>HTML5 & CSS3</p>
-      </div>
-    </article>
-<!--=====================================================----=================================================-->
-   <article class="project_card reveal"
-      data-category="clone"
-      data-title="prime_movies UI Clone"
-      data-description="A production-inspired Prime Movies UI clone built with a structured HTML framework and modular CSS styling. The project emphasizes responsive grid systems, content alignment precision, and interface consistency across devices, reflecting strong frontend layout engineering skills."
-      data-images="./img/prime_movies.png,./img/prime_movies2.png">
-
-      <div class="card_image">
-        <img src="./img/prime-video-logo-on-a-blue-background-with-a-curved-film-strip-wrapping-around-it-1.avif" alt="">
-      </div>
-
-      <div class="card_body">
-        <span class="badge clone">Clone</span>
-        <h3>Prime_movies UI Clone</h3>
-        <p>HTML5 & CSS3</p>
-      </div>
-    </article>
-<!--==========================================================================--============================-->
-<article class="project_card reveal"
-      data-category="clone"
-      data-title="prime_videos UI Clone"
-      data-description="A production-inspired Prime videos UI clone built with a structured HTML framework and modular CSS styling. The project emphasizes responsive grid systems, content alignment precision, and interface consistency across devices, reflecting strong frontend layout engineering skills."
-      data-images="./img/prime_videos (2).png,./img/prime_videos (3).png">
-
-      <div class="card_image">
-        <img src="./img/prime videos_png.jpg" alt="">
-      </div>
-
-      <div class="card_body">
-        <span class="badge clone">Clone</span>
-        <h3>prime_videos UI Clone</h3>
-        <p>HTML5 & CSS3</p>
-      </div>
-</article>
-<!--=====---======================================--==================================================-->
-<article class="project_card reveal"
-      data-category="clone"
-      data-title="shandi.com Clone"
-      data-description="A clean, responsive static website built with semantic HTML5 and modern CSS3. Focused on layout precision, accessibility-friendly structure, and consistent UI styling across devices to deliver a polished, production-inspired front-end experience."
-      data-images="./img/shandi (2).png,./img/shandi (3).png">
-
-      <div class="card_image">
-        <img src="./img/shandi (1).png" alt="">
-      </div>
-
-      <div class="card_body">
-        <span class="badge clone">Clone</span>
-        <h3>shandi.com UI Clone</h3>
-        <p>HTML5 & CSS3</p>
-      </div>
-</article>
-<!--=====---======================================--==================================================-->
-<article class="project_card reveal"
-      data-category="clone"
-      data-title="freeze Clone"
-      data-description="A clean, responsive static website built with semantic HTML5 and modern CSS3. Focused on layout precision, accessibility-friendly structure, and consistent UI styling across devices to deliver a polished, production-inspired front-end experience."
-      data-images="./img/freeze web 1 (1).png,./img/freeze web 1 (2).png">
-
-      <div class="card_image">
-        <img src="./img/freeze web 1 (1).png" alt="">
-      </div>
-
-      <div class="card_body">
-        <span class="badge clone">Clone</span>
-        <h3>freeze UI Clone</h3>
-        <p>HTML5 & CSS3</p>
-      </div>
-</article>
-<!--=====---======================================--==================================================-->
-  <article class="project_card coming_card reveal"
-      data-category="clone"
-      data-coming="true">
-    <div class="coming_content">
-      <h3>More Clone Projects Coming</h3>
-    </div>
-   </article>
-<!--===================================================================================-->
-    <!-- ================= ECOMMERCE ================= -->
-
-    <article class="project_card coming_card reveal"
-      data-category="ecommerce"
-      data-coming="true">
-      <div class="coming_content">
-        <h3>More Store Projects Coming</h3>
-      </div>
-    </article>
-
-    <!-- ================= DYNAMIC ================= -->
-  <article class="project_card reveal"
-      data-category="dynamic"
-      data-title="Dynamic calculator"
-      data-description="A dynamic calculator application built using HTML, CSS, and JavaScript, featuring real-time input handling and interactive UI feedback. The project demonstrates strong DOM manipulation, event-driven logic, and responsive layout design for smooth arithmetic operations."
-      data-images="">
-      <div class="card_image">
-         <img src="./img/calculator.png" alt="">
-      </div>
-      <div class="card_body">
-        <span class="badge dynamic">Dynamic</span>
-        <h3>Dynamic calculator</h3>
-        <p>Live UI system.</p>
-        <a href="./dynamic web pages/calculator/index.html">click here</a>
-      </div>
-  </article>
-<!--===================================================================================-->
-<article class="project_card reveal"
-      data-category="dynamic"
-      data-title="making a game"
-      data-description="A Rock–Paper–Scissors game built with HTML, CSS, and JavaScript, featuring a clean, responsive UI and smooth interactive gameplay. The project highlights DOM manipulation, event-driven logic, score tracking, and polished UI feedback to deliver an engaging user experience."
-      data-images="./img/rock papper scissors (1).png,./img/rock papper scissors (2).png">
-      <div class="card_image">
-         <img src="./img/rock papper scissors (1).png" alt="">
-      </div>
-      <div class="card_body">
-        <span class="badge dynamic">Dynamic</span>
-        <h3>Rock–Paper–Scissors game</h3>
-        <p>Live UI/UX system.</p>
-        <a href="./dynamic web pages/GAME/index.html">click here</a>
-      </div>
-  </article>
-<!--===================================================================================-->
-
-  <article class="project_card reveal"
-      data-category="dynamic"
-      data-title="facebook Validation"
-      data-description="A Facebook-inspired login interface built with HTML, CSS, and JavaScript, featuring real-time form validation and user-friendly error handling. This project focuses on clean UI structure, responsive layout, and robust validation logic to ensure accurate input handling and a smooth user experience."
-      data-images="./img/facebook Validation (1).png,./img/facebook Validation (2).png,./img/facebook Validation (3).png,./img/facebook Validation (4).png">
-      <div class="card_image">
-         <img src="./img/facebook Validation (1).png" alt="">
-      </div>
-
-      <div class="card_body">
-        <span class="badge dynamic">Dynamic</span>
-        <h3>facebook validation</h3>
-        <p>Live UI system.</p>
-      </div>
-  </article>
-<!--===================================================================================-->
-<!--===================================================================================-->
-    <article class="project_card coming_card reveal"
-      data-category="dynamic"
-      data-coming="true">
-      <div class="coming_content">
-        <h3>More Dynamic Apps Coming</h3>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- MODAL -->
-<div class="project_modal">
-  <div class="modal_overlay"></div>
-  <div class="modal_content">
-    <button class="modal_close">&times;</button>
-    <div class="modal_body"></div>
-  </div>
-</div>
-<section class="career_statement_section">
-    <div class="career_statement_container">
-
-        <h2>This Is Just The Beginning</h2>
-
-        <p class="career_intro">
-            These projects represent my foundation and technical evolution. 
-            I am actively transitioning into larger-scale, production-level systems 
-            and enterprise-grade applications.
-        </p>
-
-        <p>
-            I am currently focused on building complex, high-performance web platforms 
-            including scalable e-commerce systems, dynamic SaaS architectures, 
-            and full-stack applications designed for real-world impact.
-        </p>
-
-        <p>
-            I am not just looking for a job — I am looking for responsibility, 
-            challenges, and opportunities to contribute meaningfully to ambitious teams.
-        </p>
-
-        <div class="career_highlights">
-            <div class="highlight_item">✔ Fast Learner & Self-Driven</div>
-            <div class="highlight_item">✔ Strong Problem-Solving Approach</div>
-            <div class="highlight_item">✔ Clean & Scalable Code Practices</div>
-            <div class="highlight_item">✔ Focused on Performance & UX</div>
-        </div>
-
-        <div class="career_cta">
-            Ready to contribute, grow, and build impactful digital solutions.
-        </div>
-
-    </div>
-</section>
-<section class="contact_section" id="contact                       ">
-  <div class="contact_header reveal_contact">
-    <h2>Let’s Work Together</h2>
-    <p>
-      I’m open to internships, freelance, and full-time opportunities.
-      Send a message — I’ll reply as soon as possible.
-    </p>
-  </div>
-
-  <div class="contact_wrap">
-    <!-- Left Info -->
-    <div class="contact_info reveal_contact">
-      <div class="info_card">
-        <h3>Contact Details</h3>
-
-        <div class="info_row">
-          <span class="info_label">Email</span>
-          <a class="info_value" href="mailto:yourmail@gmail.com">arjunb7025@gmail.com</a>
-        </div>
-
-        <div class="info_row">
-          <span class="info_label">Phone</span>
-          <a class="info_value" href="tel:+910000000000">+91 7025376294</a>
-        </div>
-
-        <div class="info_row">
-          <span class="info_label">Location</span>
-          <span class="info_value">India</span>
-        </div>
-
-        <div class="social_row">
-          <!-- <a class="social_btn" href="#" aria-label="GitHub">GitHub</a> -->
-          <a class="social_btn" href="https://www.linkedin.com/in/arjun-b-655249293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn">LinkedIn</a>
-          <a class="social_btn" href="https://www.instagram.com/_arjun_ajuzz__?igsh=MWtrM3p5bHU3MnEyMQ==" aria-label="Instagram">Instagram</a>
-        </div>
-
-        <div class="availability">
-          <span class="dot"></span>
-          <span>Available for opportunities</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right Form -->
-    <form class="contact_form reveal_contact" id="contactForm" autocomplete="off">
-      <div class="form_grid">
-        <div class="field">
-          <label for="name">Full Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" required>
-          <small class="err"></small>
-        </div>
-
-        <div class="field">
-          <label for="email">Email Address</label>
-          <input id="email" name="email" type="email" placeholder="you@email.com" required>
-          <small class="err"></small>
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="subject">Subject</label>
-        <input id="subject" name="subject" type="text" placeholder="Project / Hiring / Collaboration" required>
-        <small class="err"></small>
-      </div>
-
-      <div class="field">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-        <small class="err"></small>
-      </div>
-
-      <button class="send_btn" type="submit">
-        <span class="btn_text">Send Message</span>
-        <span class="btn_loader" aria-hidden="true"></span>
-      </button>
-
-      <p class="form_note" id="formNote">Your message will be prepared. (This email has been sent for formal purposes only and as part of the JS process. Kindly note that my email is currently not connected to JS. Therefore, I am including my contact details below for further communication.)</p>
-    </form>
-  </div>
-</section>
-<script src="./script.js"></script>
+    <!-- Scripts -->
+    <script src="script.js"></script>
 </body>
+
 </html>

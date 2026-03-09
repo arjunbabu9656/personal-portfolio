@@ -1,400 +1,340 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Typewriter Logic
-    const words = ["Web Developer", "Full-Stack Developer", "Frontend Developer"];
+
+    // --- 1. Custom Cursor ---
+    const cursorDot = document.querySelector(".cursor-dot");
+    const cursorOutline = document.querySelector(".cursor-outline");
+
+    window.addEventListener("mousemove", (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        // Dot follows strictly
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        // Outline has slight delay
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
+    });
+
+    // Add hover effect for clickable elements
+    const clickables = document.querySelectorAll("a, button, .project-card, input, textarea, .filter-btn, .social-icon, .scroll-to-top, .modal-close");
+    clickables.forEach(el => {
+        el.addEventListener("mouseenter", () => {
+            document.body.classList.add("cursor-hover");
+        });
+        el.addEventListener("mouseleave", () => {
+            document.body.classList.remove("cursor-hover");
+        });
+    });
+
+    // --- 2. Mobile Menu / Navbar Scroll ---
+    const navbar = document.getElementById("navbar");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinksContainer = document.querySelector(".nav-links");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+
+        // Active state on scroll
+        const sections = document.querySelectorAll("section");
+        let current = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active");
+            }
+        });
+    });
+
+    menuToggle.addEventListener("click", () => {
+        navLinksContainer.classList.toggle("open");
+        const icon = menuToggle.querySelector("i");
+        if (navLinksContainer.classList.contains("open")) {
+            icon.classList.remove("ph-list");
+            icon.classList.add("ph-x");
+        } else {
+            icon.classList.remove("ph-x");
+            icon.classList.add("ph-list");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            navLinksContainer.classList.remove("open");
+            const icon = menuToggle.querySelector("i");
+            if (icon) {
+                icon.classList.remove("ph-x");
+                icon.classList.add("ph-list");
+            }
+        });
+    });
+
+    // --- 3. Typing Effect ---
+    const dynamicText = document.getElementById("dynamic-text");
+    const words = ["Web Applications", "Full-Stack Systems", "Interactive UIs", "Digital Experiences"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    const typeSpeed = 100;
-    const deleteSpeed = 50;
-    const pauseTime = 1000;
-    const target = document.getElementById("typewriter");
 
-    function type() {
+    function typeEffect() {
         const currentWord = words[wordIndex];
-        
+
         if (isDeleting) {
-            target.textContent = currentWord.substring(0, charIndex - 1);
+            dynamicText.textContent = currentWord.substring(0, charIndex - 1);
             charIndex--;
         } else {
-            target.textContent = currentWord.substring(0, charIndex + 1);
+            dynamicText.textContent = currentWord.substring(0, charIndex + 1);
             charIndex++;
         }
 
-        let speed = isDeleting ? deleteSpeed : typeSpeed;
+        let typeSpeed = isDeleting ? 50 : 100;
 
         if (!isDeleting && charIndex === currentWord.length) {
+            typeSpeed = 2000;
             isDeleting = true;
-            speed = pauseTime; 
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             wordIndex = (wordIndex + 1) % words.length;
-            speed = 500; 
+            typeSpeed = 500;
         }
 
-        setTimeout(type, speed);
+        setTimeout(typeEffect, typeSpeed);
     }
+    if (dynamicText) typeEffect();
 
-    type();
+    // --- 4. Intersection Observer for Scroll Animations ---
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
 
-    const observer = new IntersectionObserver((entries) => {
+    const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("active");
-                observer.unobserve(entry.target);
+
+                // If it's the skills section, animate progress bars
+                if (entry.target.id === "skills" || entry.target.closest("#skills")) {
+                    const progressBars = document.querySelectorAll(".progress-fill");
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute("data-width");
+                        bar.style.width = width;
+                    });
+                }
+
+                scrollObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-});
-
-// Wait until the entire HTML document is fully loaded
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* =========================================================
-     1️⃣ SELECT IMPORTANT ELEMENTS FROM HTML
-  ========================================================== */
-
-  // Select the grid that contains all project cards
-  const grid = document.querySelector(".projects_grid");
-
-  // Select all filter buttons (All, Clone, Ecommerce, Dynamic)
-  const buttons = document.querySelectorAll(".filter_btn");
-
-  // Select all project cards
-  const cards = document.querySelectorAll(".project_card");
-
-
-  /* =========================================================
-     2️⃣ DEFAULT STATE WHEN PAGE LOADS
-     - Hide all "coming soon" cards
-     - Prevent flashing of all categories
-  ========================================================== */
-
-  cards.forEach(card => {
-
-    // Check if this card has data-coming="true"
-    if (card.dataset.coming === "true") {
-
-      // Add class "hide" (CSS makes it display: none)
-      card.classList.add("hide");
-    }
-
-  });
-
-  // After setup is done, show the grid
-  // (This prevents flash of unwanted cards)
-  grid.classList.add("ready");
-
-
-
-  /* =========================================================
-     3️⃣ FILTER BUTTON SYSTEM
-     - Show cards based on selected category
-  ========================================================== */
-
-  buttons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-      // Remove active style from all buttons
-      buttons.forEach(btn => btn.classList.remove("active"));
-
-      // Add active style to clicked button
-      button.classList.add("active");
-
-      // Get category name from clicked button
-      const filterValue = button.dataset.filter;
-
-      // Loop through all cards
-      cards.forEach(card => {
-
-        const cardCategory = card.dataset.category;
-        const isComing = card.dataset.coming === "true";
-
-        // If user selects "All"
-        if (filterValue === "all") {
-
-          // Show only real projects
-          if (!isComing) {
-            card.classList.remove("hide");
-          } else {
-            card.classList.add("hide");
-          }
-
-        }
-        // If user selects specific category
-        else {
-
-          // Show only matching category
-          if (cardCategory === filterValue) {
-            card.classList.remove("hide");
-          } else {
-            card.classList.add("hide");
-          }
-
-        }
-
-      });
-
+    const revealElements = document.querySelectorAll(".reveal-up, .reveal-scale, .reveal-slide-right, .reveal-slide-left, .slide-up, #skills");
+    revealElements.forEach(el => {
+        scrollObserver.observe(el);
     });
 
-  });
+    // --- 5. 3D Tilt Effect ---
+    const tiltContainers = document.querySelectorAll(".tilt-container");
 
+    tiltContainers.forEach(container => {
+        container.addEventListener("mousemove", (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element
+            const y = e.clientY - rect.top;  // y position within the element
 
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
 
-  /* =========================================================
-     4️⃣ SCROLL REVEAL ANIMATION
-     - When element enters screen → add "show" class
-  ========================================================== */
+            const rotateX = ((y - centerY) / centerY) * -15; // Max 15deg
+            const rotateY = ((x - centerX) / centerX) * 15;
 
-  const observer = new IntersectionObserver((entries) => {
+            container.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
 
-    entries.forEach(entry => {
+        container.addEventListener("mouseleave", () => {
+            container.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            container.style.transition = "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)";
+        });
 
-      // If element is visible on screen
-      if (entry.isIntersecting) {
-
-        // Add class "show" (CSS animation runs)
-        entry.target.classList.add("show");
-      }
-
+        container.addEventListener("mouseenter", () => {
+            container.style.transition = "transform 0.1s linear";
+        });
     });
 
-  }, {
-    threshold: 0.15 // Trigger when 15% visible
-  });
+    // --- 6. Project Filter functionality ---
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
 
-  // Apply observer to all elements with class "reveal"
-  document.querySelectorAll(".reveal").forEach(element => {
-    observer.observe(element);
-  });
+    filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            // Remove active from all
+            filterBtns.forEach(b => b.classList.remove("active"));
+            // Add active to current
+            btn.classList.add("active");
 
+            const filterValue = btn.getAttribute("data-filter");
 
-
-  /* =========================================================
-     5️⃣ MODAL (PORTAL) SYSTEM
-     - When clicking project card → open popup
-     - Load multiple images dynamically
-  ========================================================== */
-
-  const modal = document.querySelector(".project_modal");
-  const modalBody = document.querySelector(".modal_body");
-  const closeButton = document.querySelector(".modal_close");
-  const overlay = document.querySelector(".modal_overlay");
-
-
-  // Loop through all project cards
-  cards.forEach(card => {
-
-    // Skip "coming soon" cards
-    if (card.dataset.coming === "true") return;
-
-    // When user clicks a card
-    card.addEventListener("click", () => {
-
-      // Get data from card attributes
-      const title = card.dataset.title;
-      const description = card.dataset.description;
-
-      // Convert image string into array
-      const imageList = card.dataset.images.split(",");
-
-      // Create image gallery HTML
-      const galleryHTML = imageList.map(image => {
-        return `<img src="${image.trim()}" alt="">`;
-      }).join("");
-
-      // Insert content inside modal
-      modalBody.innerHTML = `
-        <h2>${title}</h2>
-        <p>${description}</p>
-        <div class="modal_gallery">
-          ${galleryHTML}
-        </div>
-      `;
-
-      // Show modal
-      modal.classList.add("active");
-
-      // Stop background scrolling
-      document.body.style.overflow = "hidden";
-    });
-
-  });
-
-
-
-  /* =========================================================
-     6️⃣ CLOSE MODAL FUNCTION
-  ========================================================== */
-
-  function closeModal() {
-
-    // Hide modal
-    modal.classList.remove("active");
-
-    // Enable page scrolling again
-    document.body.style.overflow = "auto";
-  }
-
-  // Close when clicking X button
-  closeButton.addEventListener("click", closeModal);
-
-  // Close when clicking dark overlay
-  overlay.addEventListener("click", closeModal);
-
-});
-//==========================================================================================================//
-/* ======================================
-   SCROLL REVEAL FOR CAREER SECTION
-====================================== */
-
-const careerSection = document.querySelector(".career_statement_section");
-const highlightItems = document.querySelectorAll(".highlight_item");
-
-const careerObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            // Show main section
-            entry.target.classList.add("show");
-
-            // Stagger animation for highlight items
-            highlightItems.forEach((item, index) => {
-                setTimeout(() => {
-                    item.classList.add("show");
-                }, index * 150);
+            projectCards.forEach(card => {
+                if (filterValue === "all" || card.classList.contains(filterValue)) {
+                    card.classList.remove("hide");
+                    // Re-trigger animation
+                    setTimeout(() => {
+                        card.classList.add("active");
+                        card.style.display = "block";
+                        card.style.opacity = "1";
+                        card.style.transform = "translateY(0)";
+                    }, 50);
+                } else {
+                    card.style.opacity = "0";
+                    card.style.transform = "translateY(20px)";
+                    setTimeout(() => {
+                        card.classList.add("hide");
+                        card.classList.remove("active");
+                    }, 300);
+                }
             });
+        });
+    });
 
+    // --- 7. Modal Functionality ---
+    const modal = document.getElementById("projectModal");
+    const modalClose = document.getElementById("modalClose");
+    const modalBackdrop = document.getElementById("modalBackdrop");
+
+    window.openProjectModal = function (title, desc, imgSrc, tech, badgeConfig, liveUrl) {
+        document.getElementById("modalTitle").textContent = title;
+        document.getElementById("modalDesc").textContent = desc;
+        document.getElementById("modalImg").src = imgSrc;
+        document.getElementById("modalTech").textContent = "Tech Stack: " + tech;
+
+        const badgeEl = document.getElementById("modalBadge");
+        badgeEl.textContent = badgeConfig;
+        if (badgeConfig.toLowerCase() === 'clone') {
+            badgeEl.className = 'badge badge-clone';
+        } else {
+            badgeEl.className = 'badge badge-dynamic';
         }
 
-    });
-}, { threshold: 0.2 });
-
-if (careerSection) {
-    careerObserver.observe(careerSection);
-}
-document.addEventListener("DOMContentLoaded", () => {
-
-  const skillCards = document.querySelectorAll(".reveal_skill");
-
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-
-        entry.target.classList.add("show");
-
-        // Animate progress bar
-        const progress = entry.target.querySelector(".skill_progress");
-        const percent = entry.target.querySelector(".skill_percent");
-
-        if(progress && !progress.dataset.done){
-          progress.dataset.done = "true";
-
-          const value = progress.dataset.progress;
-          progress.style.width = value + "%";
-
-          // Counter animation
-          let count = 0;
-          const target = parseInt(percent.dataset.count);
-          const interval = setInterval(()=>{
-            count++;
-            percent.innerText = count + "%";
-            if(count >= target){
-              clearInterval(interval);
-            }
-          }, 15);
+        const actionEl = document.getElementById("modalAction");
+        if (liveUrl) {
+            actionEl.style.display = "block";
+            document.getElementById("modalLink").href = liveUrl;
+        } else {
+            actionEl.style.display = "none";
         }
 
-      }
-    });
-  },{threshold:0.3});
-
-  skillCards.forEach(card=>{
-    observer.observe(card);
-  });
-
-});
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* Scroll reveal */
-  const contactEls = document.querySelectorAll(".reveal_contact");
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add("show");
-      }
-    });
-  },{threshold:0.2});
-
-  contactEls.forEach(el=>obs.observe(el));
-
-  /* Simple UX validation + loader */
-  const form = document.getElementById("contactForm");
-  const note = document.getElementById("formNote");
-
-  if(!form) return;
-
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  function setError(field, msg){
-    const err = field.parentElement.querySelector(".err");
-    if(err) err.textContent = msg;
-    field.style.borderColor = msg ? "rgba(255,107,107,.9)" : "rgba(255,255,255,.12)";
-  }
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const btn = form.querySelector(".send_btn");
-    const name = form.querySelector("#name");
-    const email = form.querySelector("#email");
-    const subject = form.querySelector("#subject");
-    const message = form.querySelector("#message");
-
-    let ok = true;
-
-    // Name
-    if(name.value.trim().length < 2){
-      setError(name, "Please enter your name.");
-      ok = false;
-    } else setError(name, "");
-
-    // Email
-    if(!emailPattern.test(email.value.trim())){
-      setError(email, "Please enter a valid email.");
-      ok = false;
-    } else setError(email, "");
-
-    // Subject
-    if(subject.value.trim().length < 3){
-      setError(subject, "Please enter a subject.");
-      ok = false;
-    } else setError(subject, "");
-
-    // Message
-    if(message.value.trim().length < 10){
-      setError(message, "Message should be at least 10 characters.");
-      ok = false;
-    } else setError(message, "");
-
-    if(!ok){
-      note.textContent = "Please fix the highlighted fields.";
-      return;
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden"; // Prevent scrolling
     }
 
-    // Fake loading animation (connect EmailJS / Formspree later)
-    btn.classList.add("loading");
-    note.textContent = "Sending message...";
+    function closeModal() {
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+    }
 
-    setTimeout(()=>{
-      btn.classList.remove("loading");
-      note.textContent = "Message ready ✅ (Connect EmailJS / Formspree to send it live).";
-      form.reset();
-      [name,email,subject,message].forEach(f=>setError(f,""));
-    }, 1200);
-  });
+    if (modalClose) {
+        modalClose.addEventListener("click", closeModal);
+    }
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener("click", closeModal);
+    }
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal && modal.classList.contains("active")) {
+            closeModal();
+        }
+    });
+
+    // --- 8. Contact Form Handling ---
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const btn = contactForm.querySelector(".submit-btn");
+            const note = document.getElementById("formNote");
+
+            btn.classList.add("loading");
+            note.textContent = "Processing logic...";
+            note.style.color = "var(--text-secondary)";
+
+            setTimeout(() => {
+                btn.classList.remove("loading");
+                note.textContent = "Message simulated correctly ✨ (Connect EmailJS to send it live)";
+                note.style.color = "#4ade80"; // Bright Green
+                contactForm.reset();
+
+                setTimeout(() => {
+                    note.textContent = "";
+                }, 5000);
+            }, 1500);
+        });
+    }
+
+    // --- 9. Scroll To Top ---
+    const scrollToTopBtn = document.getElementById("scrollToTop");
+    if (scrollToTopBtn) {
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    }
+
+    // --- 10. Reading Progress Bar ---
+    const readingProgress = document.getElementById("readingProgress");
+    if (readingProgress) {
+        window.addEventListener("scroll", () => {
+            const totalScroll = document.documentElement.scrollTop;
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scroll = `${totalScroll / windowHeight * 100}%`;
+            readingProgress.style.width = scroll;
+        });
+    }
+
+    // --- 11. Magnetic Buttons ---
+    const magneticElements = document.querySelectorAll('.btn, .social-icon, .filter-btn');
+    magneticElements.forEach((el) => {
+        el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            // Calculate distance from center of element
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            // Move the element slightly towards mouse
+            el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+
+            // If it has icon child, move it a bit more for parallax feeling
+            const icon = el.querySelector('i');
+            if (icon) {
+                icon.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+            }
+        });
+
+        // Reset transform on mouse out
+        el.addEventListener('mouseleave', () => {
+            el.style.transform = 'translate(0px, 0px)';
+            const icon = el.querySelector('i');
+            if (icon) {
+                icon.style.transform = 'translate(0px, 0px)';
+            }
+        });
+    });
 
 });
