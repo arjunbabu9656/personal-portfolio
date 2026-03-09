@@ -1,0 +1,83 @@
+/* Import futuristic fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Animated gradient background */
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Orbitron', sans-serif;
+    padding: 20px;
+}
+
+/* Background Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.header {
+    position: absolute;
+    top: 5vh;
+    font-size: clamp(1rem, 5vw, 1.8rem);
+    color: rgba(0, 255, 255, 0.6);
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: clamp(20px, 8vw, 60px);
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: scale(1.02);
+    border-color: rgba(0, 255, 255, 0.3);
+}
+
+#time {
+    /* clamp(min, preferred, max) - This makes the font fluid */
+    font-size: clamp(3rem, 18vw, 10rem);
+    font-weight: 700;
+    color: #00ffff;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.5),
+                 0 0 40px rgba(0, 255, 255, 0.2);
+    font-family: 'Share Tech Mono', monospace;
+}
+
+#date {
+    font-size: clamp(0.8rem, 4vw, 1.5rem);
+    color: #fff;
+    margin-top: 10px;
+    letter-spacing: 0.3rem;
+    opacity: 0.8;
+}
+
+/* Landscape Mode Adjustments (Phones turned sideways) */
+@media (max-height: 500px) {
+    .header { display: none; }
+    .container { padding: 10px; }
+    #time { font-size: 20vh; }
+}

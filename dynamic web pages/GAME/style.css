@@ -1,0 +1,100 @@
+/* ===============================
+   RESET
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===============================
+   BODY
+================================ */
+body {
+    background: linear-gradient(135deg, #020617, #312e81, #020617);
+    min-height: 100vh;
+}
+
+/* ===============================
+   LOADING SCREEN
+================================ */
+#LoadingScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-size: clamp(40px, 10vw, 100px);
+    font-family: 'Orbitron', sans-serif;
+    color: #c7d2fe;
+    text-shadow: 0 0 22px rgba(199, 210, 254, 0.6);
+    text-align: center;
+    padding: 10px;
+}
+
+/* ===============================
+   COMPANY NAME
+================================ */
+#Combany_Name {
+    font-size: clamp(22px, 6vw, 50px);
+    color: #c7d2fe;
+    font-family: 'Orbitron', sans-serif;
+    padding: 10px;
+}
+
+/* ===============================
+   BUTTON (HTML UNCHANGED)
+================================ */
+.Main_screen a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40%;
+    padding: 14px 32px;
+    font-size: clamp(13px, 3.5vw, 16px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(37, 117, 252, 0.35);
+    white-space: nowrap;
+}
+
+/* ===============================
+   SMALL PHONES (≤ 480px)
+================================ */
+@media (max-width: 480px) {
+    #LoadingScreen {
+        height: 40vh;
+    }
+
+    .Main_screen a {
+        margin-left: 50%;
+        transform: translateX(-50%);
+        width: 85%;
+        padding: 12px;
+        font-size: 13px;
+    }
+}
+
+/* ===============================
+   MEDIUM PHONES (≤ 768px)
+================================ */
+@media (max-width: 768px) {
+    .Main_screen a {
+        margin-left: 50%;
+        transform: translateX(-50%);
+        width: 65%;
+    }
+}
+
+/* ===============================
+   TABLETS (≤ 1024px)
+================================ */
+@media (max-width: 1024px) {
+    #LoadingScreen {
+        height: 45vh;
+    }
+}
