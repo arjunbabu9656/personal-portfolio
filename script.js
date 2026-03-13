@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => {
                 btn.classList.remove("loading");
-                note.textContent = "Message simulated correctly ✨ (Connect EmailJS to send it live)";
+                note.textContent = "Message simulated correctly ✨";
                 note.style.color = "#4ade80"; // Bright Green
                 contactForm.reset();
 
