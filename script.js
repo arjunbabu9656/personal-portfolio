@@ -206,6 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     setTimeout(() => {
                         card.classList.add("hide");
                         card.classList.remove("active");
+                        card.style.display = "none";
                     }, 300);
                 }
             });
