@@ -1,35 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- 1. Custom Cursor ---
-    const cursorDot = document.querySelector(".cursor-dot");
-    const cursorOutline = document.querySelector(".cursor-outline");
-
-    window.addEventListener("mousemove", (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        // Dot follows strictly
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        // Outline has slight delay
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-    });
-
-    // Add hover effect for clickable elements
-    const clickables = document.querySelectorAll("a, button, .project-card, input, textarea, .filter-btn, .social-icon, .scroll-to-top, .modal-close");
-    clickables.forEach(el => {
-        el.addEventListener("mouseenter", () => {
-            document.body.classList.add("cursor-hover");
-        });
-        el.addEventListener("mouseleave", () => {
-            document.body.classList.remove("cursor-hover");
-        });
-    });
-
     // --- 2. Mobile Menu / Navbar Scroll ---
     const navbar = document.getElementById("navbar");
     const menuToggle = document.querySelector(".menu-toggle");
@@ -308,34 +278,5 @@ document.addEventListener("DOMContentLoaded", () => {
             readingProgress.style.width = scroll;
         });
     }
-
-    // --- 11. Magnetic Buttons ---
-    const magneticElements = document.querySelectorAll('.btn, .social-icon, .filter-btn');
-    magneticElements.forEach((el) => {
-        el.addEventListener('mousemove', (e) => {
-            const rect = el.getBoundingClientRect();
-            // Calculate distance from center of element
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-
-            // Move the element slightly towards mouse
-            el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-
-            // If it has icon child, move it a bit more for parallax feeling
-            const icon = el.querySelector('i');
-            if (icon) {
-                icon.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
-            }
-        });
-
-        // Reset transform on mouse out
-        el.addEventListener('mouseleave', () => {
-            el.style.transform = 'translate(0px, 0px)';
-            const icon = el.querySelector('i');
-            if (icon) {
-                icon.style.transform = 'translate(0px, 0px)';
-            }
-        });
-    });
 
 });
